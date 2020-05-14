@@ -28,9 +28,13 @@
     ></msg-sidebar>
     <category v-if="this.state==='TOPICSHOWCATEGORY' || this.state==='CREATETOPICCAT'"></category>
     <div v-if="state==='CREATETOPICCAT'" id="createtopicbtn">
-      <a-button type="primary">下一步</a-button>
+      <a-button type="primary" @click="gotoCreateTopic">下一步</a-button>
     </div>
     <topic-detail v-if="state==='TOPICDETAIL'"></topic-detail>
+    <create-topic v-if="state==='CREATETOPIC'"
+                  @submitTopic="submitTopic"
+                  @throwTopic="throwTopic"
+    ></create-topic>
   </div>
 </template>
 
@@ -43,6 +47,7 @@
   import MsgSidebar from './components/msgSidebar.vue'
   import Category from './components/category.vue'
   import TopicDetail from './components/topicDetail.vue'
+  import CreateTopic from './components/createTopic.vue'
 export default {
   name: 'App',
   components: {
@@ -53,7 +58,8 @@ export default {
     ChangeInfo,
     MsgSidebar,
     Category,
-    TopicDetail
+    TopicDetail,
+    CreateTopic
   },
   data: function () {
     return {
@@ -101,6 +107,17 @@ export default {
       console.log('Get clickCreateA')
       this.state = 'CREATETOPICCAT'
     },
+    gotoCreateTopic: function () {
+      this.state = 'CREATETOPIC'
+    },
+    submitTopic: function () {
+      console.log('Get submitTopic')
+      this.state = 'TOPICDETAIL'
+    },
+    throwTopic: function () {
+      console.log('Get throwTopic')
+      this.state = 'TOPIC'
+    }
   }
 }
 </script>

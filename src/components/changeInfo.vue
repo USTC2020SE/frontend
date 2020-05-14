@@ -5,10 +5,10 @@
     <div id="placeholder">
       <p class="info">点击修改背景</p>
     </div>
+    <p id="changeavatar">点击修改头像</p>
     <a-avatar id="avatar" shape="square" :size="128" icon="user" />
     <h1 id="username">点击修改ID</h1>
     <p id="sign">点击修改个人简介</p>
-    <p id="changeavatar">点击修改头像</p>
     <div id="buttongroup">
       <a-button id="changeconfirm" type="primary" @click="emitConfirm">确定修改</a-button>
       <a-button id="changereturn" type="danger" @click="emitReturn">返回</a-button>
@@ -17,8 +17,19 @@
 </template>
 
 <script>
+  function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  }
   export default {
     name: "changeInfo",
+    data() {
+      return {
+        loading: false,
+        imageUrl: '',
+      }
+    },
     methods: {
       emitReturn: function () {
         console.log('Return button on change info page clicked')
@@ -27,7 +38,8 @@
       emitConfirm: function () {
         console.log('Confirm button on change info page clicked')
         this.$emit('clickConfirm')
-      }
+      },
+
     }
   }
 </script>

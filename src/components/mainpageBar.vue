@@ -4,6 +4,7 @@
         <a-menu-item key="1"><a-icon type="bell" />个人提醒</a-menu-item>
         <a-menu-item key="2"><a-icon type="flag" />我的主题</a-menu-item>
         <a-menu-item key="3"><a-icon type="retweet" />我的回复</a-menu-item>
+        <a-menu-item key="4"><a-icon type="issues-close" />举报提醒</a-menu-item>
       </a-menu>
     </div>
 </template>
